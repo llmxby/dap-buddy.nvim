@@ -16,10 +16,10 @@ M.config = {
 		local stdout = vim.loop.new_pipe(false)
 		local handle
 		local pid_or_err
-		local port = 38697
+		local port = 8888 
 		local opts = {
 			stdio = { nil, stdout },
-			args = { "dap", "-l", "127.0.0.1:" .. port },
+			args = { "dap", "-l", "10.227.77.154:" .. port },
 			detached = true,
 		}
 		handle, pid_or_err = vim.loop.spawn("dlv", opts, function(code)
@@ -40,7 +40,7 @@ M.config = {
 		end)
 		-- Wait for delve to start
 		vim.defer_fn(function()
-			callback({ type = "server", host = "127.0.0.1", port = port })
+			callback({ type = "server", host = "10.227.77.154", port = port })
 		end, 100)
 	end,
 	configurations = {
